@@ -103,7 +103,9 @@ class MyAwesomeEmailTemplates extends HTMLElement {
         });
       
 
-        console.log(client.auth.getActiveToken!());
+        const headers = await client.auth.getAuthHeaders();
+        console.log('headers', headers);
+
         const instanceId = 'bb';
 
         const emailInput = this.shadowRoot!.getElementById('email') as any;
