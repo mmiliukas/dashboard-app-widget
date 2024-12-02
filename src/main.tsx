@@ -1,11 +1,6 @@
 import { createClient } from '@wix/sdk';
 import { site } from '@wix/site';
 
-const client = createClient({
-    host: site.host({ applicationId: '240a79b4-cc3c-4df2-9cff-d171d4f18cdf' }),
-    auth: site.auth(),
-});
-
 const styles = `
   <style>
     * {
@@ -94,6 +89,12 @@ class MyAwesomeEmailTemplates extends HTMLElement {
 
     async subscribe() {
         console.trace('subscribe() called');
+  
+        const client = createClient({
+          host: site.host({ applicationId: '240a79b4-cc3c-4df2-9cff-d171d4f18cdf' }),
+          auth: site.auth(),
+        });
+      
         console.log(client);
         //     const wixConfig = JSON.parse(this.getAttribute('wixconfig') || '{}');
         //     const emailInput = this.shadowRoot.getElementById('email');
