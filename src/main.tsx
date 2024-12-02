@@ -102,11 +102,15 @@ class MyAwesomeEmailTemplates extends HTMLElement {
           auth: site.auth(this.accessToken),
         });
       
+
+        console.log(client.auth.getActiveToken!());
+        const instanceId = 'bb';
+
         const emailInput = this.shadowRoot!.getElementById('email') as any;
         const email = emailInput!.value;
 
         client.fetchWithAuth(
-          'https://dashboard-app-server-isy0.onrender.com/subscriptions',
+          'https://dashboard-app-server-isy0.onrender.com/subscriptions/by-instance-id?instanceId=' + instanceId,
           {
             method: 'POST',
             body: JSON.stringify({ email }),
