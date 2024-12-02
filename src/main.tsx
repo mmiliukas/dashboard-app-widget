@@ -87,6 +87,10 @@ class MyAwesomeEmailTemplates extends HTMLElement {
         this.shadowRoot!.getElementById('subscribeBtn')!.addEventListener('click', () => this.subscribe());
     };
 
+    accessTokenListener(param: any) {
+      console.log('accessTokenListener', param);
+    }
+
     async subscribe() {
         console.trace('subscribe() called');
   
