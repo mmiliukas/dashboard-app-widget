@@ -102,41 +102,17 @@ class MyAwesomeEmailTemplates extends HTMLElement {
           auth: site.auth(this.accessToken),
         });
       
-        // @ts-expect-error
-        const token = client.auth.getActiveToken();
-        console.log('token', token);
+        const emailInput = this.shadowRoot!.getElementById('email') as any;
+        const email = emailInput!.value;
 
-        // client.auth.decodeJWT()
-        // const emailInput = this.shadowRoot!.getElementById('email') as any;
-        // const email = emailInput!.value;
-
-        // client.fetchWithAuth(
-        //   'https://dashboard-app-server-isy0.onrender.com/subscriptions',
-        //   {
-        //     method: 'POST',
-        //     body: JSON.stringify({ email }),
-        //     headers: { 'Content-Type': 'application/json' }
-        //   }
-        // );
-
-        // console.log(client);
-        //     const wixConfig = JSON.parse(this.getAttribute('wixconfig') || '{}');
-
-        //     if (email) {
-        //         await fetch(`https://my-app-backend-br8l.onrender.com/subscribe`, {
-        //             method: 'POST',
-        //             headers: { 'Content-Type': 'application/json' },
-        //             body: JSON.stringify({
-        //                 instanceId: wixConfig.instanceId,
-        //                 email,
-        //             }),
-        //         });
-
-        //         this.shadowRoot.innerHTML = `
-        //     ${styles}
-        //     ${thankYouHtml}
-        //   `
-        // };
+        client.fetchWithAuth(
+          'https://dashboard-app-server-isy0.onrender.com/subscriptions',
+          {
+            method: 'POST',
+            body: JSON.stringify({ email }),
+            headers: { 'Content-Type': 'application/json' }
+          }
+        );
     };
 };
 
