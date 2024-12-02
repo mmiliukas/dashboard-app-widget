@@ -2,7 +2,7 @@ import { createClient } from '@wix/sdk';
 import { site } from '@wix/site';
 
 const client = createClient({
-    host: site.host(),
+    host: site.host({ applicationId: '240a79b4-cc3c-4df2-9cff-d171d4f18cdf' }),
     auth: site.auth(),
 });
 
