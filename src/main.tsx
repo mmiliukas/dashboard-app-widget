@@ -67,6 +67,8 @@ const formHtml = `
 class MyAwesomeEmailTemplates extends HTMLElement {
     static observedAttributes = ["wixconfig", "wixConfig"];
 
+  accessToken: any;
+
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -88,6 +90,7 @@ class MyAwesomeEmailTemplates extends HTMLElement {
     };
 
     accessTokenListener(param: any) {
+      this.accessToken = param;
       console.log('accessTokenListener', param);
     }
 
@@ -96,7 +99,7 @@ class MyAwesomeEmailTemplates extends HTMLElement {
   
         const client = createClient({
           host: site.host({ applicationId: '240a79b4-cc3c-4df2-9cff-d171d4f18cdf' }),
-          auth: site.auth(),
+          auth: site.auth(this.accessToken),
         });
       
         console.log(client);
